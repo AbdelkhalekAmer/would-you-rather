@@ -1,14 +1,14 @@
 import { Redirect, Route } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
-    //TODO: Get correct value
-    const isLoggedIn = true;
+    const user = useSelector(state => state.user);
 
     return (
         <Route
             {...rest}
             render={props =>
-                isLoggedIn ?
+                user && user.id ?
                     (<Component {...props} />) :
                     (<Redirect to={{ pathname: '/login', state: { from: props.location } }} />)
             }

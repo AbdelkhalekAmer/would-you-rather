@@ -1,0 +1,10 @@
+.user-item {
+  height: 20vh;
+}
+
+.user-item img {
+  height: 3rem;
+  width: 3rem;
+  object-fit: cover;
+  border-radius: 50%;
+}
