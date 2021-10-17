@@ -4,11 +4,11 @@ import { Link } from 'react-router-dom';
 
 const QuestionToAnswer = ({ author, question }) => {
     return (<StaticCard>
-        <div>
+        <div className='user'>
             <img src={author.avatarURL} alt='avatar' />
             <span>{author.name}</span>
         </div>
-        <div>
+        <div className='question'>
             <p>{question.text}</p>
             <Link to={`/questions/${question.id}`}>View</Link>
         </div>
