@@ -2,6 +2,7 @@ import './CreateQuestion.css';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createQuestion } from '../../Store/question-actions';
+import { Redirect } from 'react-router';
 
 const CreateQuestion = () => {
     const dispatch = useDispatch();
@@ -9,6 +10,8 @@ const CreateQuestion = () => {
     const authenticatedUser = useSelector(state => state.user.authenticatedUser);
 
     const [options, updateOptions] = useState({ optionOne: '', optionTwo: '' });
+
+    const [redirect, setRedirect] = useState(false);
 
     const onChangingOptionOneHandler = event => {
         const optionOne = event.target.value;
@@ -31,27 +34,31 @@ const CreateQuestion = () => {
 
         dispatch(createQuestion({
             author: authenticatedUser.id,
-            optionOne: options.optionOne,
-            optionTwo: options.optionTwo
+            optionOneText: options.optionOne,
+            optionTwoText: options.optionTwo
         }));
+
+        setRedirect(true);
     }
 
-    return (<div>
-        <h2>Create New</h2>
-        <form onSubmit={createQuestionHandler}>
-            <h3>Would you rather?</h3>
-            <input
-                placeholder='Option One...'
-                value={options.optionOne}
-                onChange={onChangingOptionOneHandler} />
-            <h3> or </h3>
-            <input
-                placeholder='Option Two...'
-                value={options.optionTwo}
-                onChange={onChangingOptionTwoHandler} />
-            <input type='submit' />
-        </form>
-    </div>);
+    return redirect ?
+        <Redirect to='/' /> :
+        (<div>
+            <h2>Create New</h2>
+            <form onSubmit={createQuestionHandler}>
+                <h3>Would you rather?</h3>
+                <input
+                    placeholder='Option One...'
+                    value={options.optionOne}
+                    onChange={onChangingOptionOneHandler} />
+                <h3> or </h3>
+                <input
+                    placeholder='Option Two...'
+                    value={options.optionTwo}
+                    onChange={onChangingOptionTwoHandler} />
+                <input type='submit' />
+            </form>
+        </div>);
 };
 
 export default CreateQuestion;

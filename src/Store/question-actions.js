@@ -17,7 +17,7 @@ export const createQuestion = (question) => {
     console.log(question);
     return async (dispatch) => {
         try {
-            if (!question || !question.optionOne || !question.optionTwo || !question.author) {
+            if (!question || !question.optionOneText || !question.optionTwoText || !question.author) {
                 throw Error(`Invalid question details: ${JSON.stringify(question)}`);
             }
             const newQuestion = await questionService.save(question);
