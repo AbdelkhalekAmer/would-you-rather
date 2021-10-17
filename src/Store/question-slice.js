@@ -13,6 +13,9 @@ const questionSlice = createSlice({
         },
         saveQuestion: (state, action) => {
             state.questions = [action.payload.question, ...state.questions];
+        },
+        updateQuestionsWithAnswers: (state, action) => {
+            state.questions = [...action.payload.questions];
         }
     }
 });

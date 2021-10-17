@@ -28,3 +28,17 @@ export const createQuestion = (question) => {
         }
     };
 };
+
+export const saveAnswer = (authenticatedUserId, questionId, answer) => {
+    return async (dispatch) => {
+        try {
+            const rawQuestions = await questionService.saveAnswer(authenticatedUserId, questionId, answer);
+            const questions = [];
+            for (const key in rawQuestions) questions.push(rawQuestions[key]);
+            dispatch(questionActions.updateQuestionsWithAnswers({ questions }));
+        } catch (error) {
+            //TODO: to be replaced by a notification service or notification reducer.
+            alert(error);
+        }
+    };
+};
