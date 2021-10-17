@@ -5,11 +5,13 @@ import Home from './Home';
 import QuestionToAnswerList from '../../Components/Question/QuestionToAnswerList';
 
 const QuestionsToAnswer = () => {
-    const [questionsToAnswer, setQuestionsToAnswer] = useState([]);
+    const users = useSelector(state => state.user.users);
+
+    const questions = useSelector(state => state.question.questions);
 
     const authenticatedUser = useSelector(state => state.user.authenticatedUser);
 
-    const questions = useSelector(state => state.question.questions);
+    const [questionsToAnswer, setQuestionsToAnswer] = useState([]);
 
     const isQuestionNotAnsweredByAuthenticatedUser = (question) => {
         const hasVotedForOptionOne = question.optionOne.votes.includes(authenticatedUser.id);
@@ -17,14 +19,20 @@ const QuestionsToAnswer = () => {
         return !(hasVotedForOptionOne || hasVotedForOptionTwo);
     };
 
-    const toQuestionToAnswerCard = (questionToAnswer) => ({
-        author: questionToAnswer.author,
-        question: {
-            id: questionToAnswer.id,
-            optionOne: questionToAnswer.optionOne.text,
-            optionTwo: questionToAnswer.optionTwo.text
-        }
-    });
+    const toQuestionToAnswerCard = (questionToAnswer) => {
+        const author = users.find(user => user.id === questionToAnswer.author);
+        return {
+            author: {
+                id: author.id,
+                name: author.name,
+                avatarURL: author.avatarURL
+            },
+            question: {
+                id: questionToAnswer.id,
+                text: `...${questionToAnswer.optionOne.text}...`
+            }
+        };
+    };
 
     useEffect(
         () => setQuestionsToAnswer([...questions.filter(isQuestionNotAnsweredByAuthenticatedUser).map(toQuestionToAnswerCard)]),

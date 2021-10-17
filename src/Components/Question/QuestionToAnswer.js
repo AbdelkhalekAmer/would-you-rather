@@ -1,19 +1,17 @@
 import './QuestionToAnswer.css';
 import StaticCard from '../UI/StaticCard/StaticCard';
+import { Link } from 'react-router-dom';
 
 const QuestionToAnswer = ({ author, question }) => {
     return (<StaticCard>
-        <div>{JSON.stringify(author)}</div>
-        <form>
-            <h3> Would you rather... </h3>
-            <input type='radio' id='optionOne' name='option' value='optionOne' />
-            <label htmlFor='optionOne'>{question.optionOne}</label>
-            <br />
-            <input type='radio' id='optionTwo' name='option' value='optionTwo' />
-            <label htmlFor='optionTwo'>{question.optionTwo}</label>
-            <br />
-            <input type='submit' />
-        </form>
+        <div>
+            <img src={author.avatarURL} alt='avatar' />
+            <span>{author.name}</span>
+        </div>
+        <div>
+            <p>{question.text}</p>
+            <Link to={`/questions/${question.id}`}>View</Link>
+        </div>
     </StaticCard>);
 };
 
