@@ -5,7 +5,9 @@ import { Fragment } from 'react';
 const Page = ({ children }) => {
     return (<Fragment>
         <Header></Header>
-        {children}
+        <div className='page-content'>
+            {children}
+        </div>
     </Fragment>);
 };
 

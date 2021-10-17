@@ -1,0 +1,12 @@
+.home-navigation {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.home-navigation a {
+  width: 100%;
+  text-decoration: none;
+  margin: 1rem;
+}

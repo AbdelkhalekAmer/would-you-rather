@@ -12,7 +12,7 @@ const Header = () => {
     const logoutHandler = _ => dispatch(userActions.unSetAuthenticatedUser());
 
     return (<div className='header'>
-        <h1>Would you rather?</h1>
+        <h1>{'<WOULD YOU RATHER />'}</h1>
         <ul>
             <li><Link to='/Home/Questions-to-answer'>Home</Link></li>
             <li><Link to='/New-question'>New Question</Link></li>
