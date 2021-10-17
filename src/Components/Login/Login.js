@@ -1,14 +1,19 @@
 import './Login.css';
-import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import UserList from '../User/UserList';
-import * as UserService from '../../Services/UserService';
+import { getAuthenticateUser } from '../../Store/user-actions';
 
-const Login = () => {
-    const [users, setUsers] = useState([]);
+const Login = ({ users }) => {
+    const dispatch = useDispatch();
 
-    useEffect(() => UserService.getAll().then(setUsers), []);
+    const selectUserHandler = id => {
+        dispatch(getAuthenticateUser(id));
+    };
 
-    return users ? (<UserList users={users} />) : null;
+    return (<div className='login'>
+        <h3>Who are you?</h3>
+        <UserList users={users} onSelectUserHandler={selectUserHandler} />
+    </div>);
 };
 
 export default Login;

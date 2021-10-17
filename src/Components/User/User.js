@@ -1,11 +1,11 @@
-import Card from '../UI/Card/Card';
 import './User.css';
+import Card from '../UI/Card/Card';
 
-const User = ({ avatarURL, name }) => {
-    return (<li className="user-item">
+const User = ({ user, onSelectUserHandler }) => {
+    return (<li className="user-item" onClick={onSelectUserHandler(user.id)}>
         <Card>
-            <img src={avatarURL} alt={name} />
-            <span>{name}</span>
+            <img src={user.avatarURL} alt='avatar' />
+            <span>{user.name}</span>
         </Card>
     </li>);
 };
