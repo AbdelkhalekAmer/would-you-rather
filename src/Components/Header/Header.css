@@ -32,11 +32,26 @@
 
 .logout {
   height: 20vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
-.logout img {
-  height: 2rem;
-  width: 2rem;
+.logout a {
+  font-size: medium;
+  margin-top: 1rem;
+}
+
+.user-logout {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.user-logout img {
+  height: 3rem;
+  width: 3rem;
   object-fit: cover;
   border-radius: 50%;
 }

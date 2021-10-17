@@ -19,7 +19,10 @@ const Header = () => {
             <li><Link to='/Leader-board'>Leader Board</Link></li>
         </ul>
         <div className='logout'>
-            <img src={authenticatedUser.avatarURL} alt='avatar' />
+            <div className='user'>
+                <img src={authenticatedUser.avatarURL} alt='avatar' />
+                <span>{authenticatedUser.name}</span>
+            </div>
             <Link to='/Login' onClick={logoutHandler}>Logout</Link>
         </div>
     </div>);
