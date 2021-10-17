@@ -1,19 +1,18 @@
 import './LandingPage.css';
-import { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import { loadUsers } from '../../Store/user-actions';
+import { useState, useEffect } from 'react';
+import * as userService from '../../Services/UserService';
 import Login from '../../Components/Login/Login';
-
+import { Redirect } from 'react-router';
+import { useSelector } from 'react-redux';
 const LandingPage = () => {
-    const dispatch = useDispatch();
+    const [users, setUsers] = useState([]);
+    const authenticatedUser = useSelector(state => state.user.authenticatedUser);
 
-    const users = useSelector(state => state.user.users);
+    useEffect(() => userService.getAll().then(setUsers), []);
 
-    useEffect(() => dispatch(loadUsers()), [dispatch]);
-
-    return (<div>
-        <Login users={users} />
-    </div>);
+    return authenticatedUser && authenticatedUser.id ?
+        (<Redirect to='/Home/Questions-to-answer' />) :
+        (<div><Login users={users} /></div>);
 };
 
 export default LandingPage;

@@ -1,8 +1,8 @@
 import './UserList.css';
 import User from './User';
 
-const UserList = ({ users, onSelectUserHandler }) => (<ul className='user-list'>
-    {users.map(user => (<User key={user.id} user={user} onSelectUserHandler={onSelectUserHandler} />))}
+const UserList = ({ users }) => (<ul className='user-list'>
+    {users.map(user => (<User key={user.id} {...user} />))}
 </ul>);
 
 export default UserList;

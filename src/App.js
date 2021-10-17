@@ -15,6 +15,6 @@ const App = () => {
     <Route path='*' render={() => <NotFound />} />
   </Switch>
   );
-}
+};
 
 export default App;
