@@ -9,7 +9,10 @@ const questionSlice = createSlice({
     },
     reducers: {
         setQuestions: (state, action) => {
-            state.questions = [...action.payload.questions];
+            state.questions = [...action.payload.questions.sort((a, b) => b.timestamp - a.timestamp)];
+        },
+        saveQuestion: (state, action) => {
+            state.questions = [action.payload.question, ...state.questions];
         }
     }
 });

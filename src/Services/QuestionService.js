@@ -7,6 +7,6 @@ export const getAll = async () => {
     return questions;
 };
 
-export const save = (info) => _saveQuestion(info);
+export const save = async (info) => await _saveQuestion(info);
 
 export const saveAnswer = (authenticatedUser, qid, answer) => _saveQuestionAnswer(authenticatedUser, qid, answer);
