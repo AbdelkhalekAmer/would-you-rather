@@ -1,7 +1,10 @@
+import Page from '../Page';
 import './LeaderBoard.css';
 
 const LeaderBoard = () => {
-    return (<div>LeaderBoard</div>);
+    return (<Page>
+        <div>LeaderBoard</div>
+    </Page>);
 };
 
 export default LeaderBoard;

@@ -1,12 +1,13 @@
 import './Home.css';
+import Page from '../Page';
 
 const Home = ({ children }) => {
-    return (<>
-        <></>
+    return (<Page>
         <div>Home</div>
         <div>
             {children}
-        </div></>);
+        </div>
+    </Page>);
 };
 
 export default Home;

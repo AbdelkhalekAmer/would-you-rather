@@ -1,7 +1,10 @@
+import Page from '../Page';
 import './NewQuestion.css';
 
 const NewQuestion = () => {
-    return (<div>NewQuestion</div>);
+    return (<Page>
+        <div>NewQuestion</div>
+    </Page>);
 };
 
 export default NewQuestion;

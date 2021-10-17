@@ -12,7 +12,7 @@ const LandingPage = () => {
 
     return authenticatedUser && authenticatedUser.id ?
         (<Redirect to='/Home/Questions-to-answer' />) :
-        (<div><Login users={users} /></div>);
+        (<div className='landing-page'><Login users={users} /></div>);
 };
 
 export default LandingPage;
