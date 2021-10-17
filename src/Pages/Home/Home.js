@@ -7,7 +7,6 @@ import { getAllQuestions } from '../../Store/question-actions';
 import { useEffect } from 'react';
 
 const Home = ({ children }) => {
-
     const dispatch = useDispatch();
 
     useEffect(() => dispatch(getAllQuestions()), [dispatch]);
