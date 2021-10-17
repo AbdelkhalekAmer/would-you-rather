@@ -2,6 +2,7 @@ import './AnsweredQuestions.css';
 import Home from './Home';
 import { useSelector } from 'react-redux';
 import { useState, useEffect } from 'react';
+import AnsweredQuestionList from '../../Components/Question/AnsweredQuestionList';
 
 const AnsweredQuestions = () => {
     const [answeredQuestions, setAnsweredQuestions] = useState([]);
@@ -16,11 +17,25 @@ const AnsweredQuestions = () => {
         return hasVotedForOptionOne || hasVotedForOptionTwo;
     };
 
-    useEffect(() => setAnsweredQuestions([...questions.filter(isQuestionAnsweredByAuthenticatedUser)]), []);
+    const toAnsweredQuestionCard = (answeredQuestion) => ({
+        id: answeredQuestion.id,
+        author: answeredQuestion.author,
+        optionOne: {
+            text: answeredQuestion.optionOne.text,
+            isVotedByAuthenticatedUser: answeredQuestion.optionOne.votes.includes(authenticatedUser.id),
+            totalVotes: answeredQuestion.optionOne.votes.length
+        },
+        optionTwo: {
+            text: answeredQuestion.optionTwo.text,
+            isVotedByAuthenticatedUser: answeredQuestion.optionTwo.votes.includes(authenticatedUser.id),
+            totalVotes: answeredQuestion.optionTwo.votes.length
+        },
+        totalVotes: answeredQuestion.optionOne.votes.length + answeredQuestion.optionTwo.votes.length
+    });
 
-    return (<Home>
-        <div>{JSON.stringify(answeredQuestions)}</div>
-    </Home>);
+    useEffect(() => setAnsweredQuestions([...questions.filter(isQuestionAnsweredByAuthenticatedUser).map(toAnsweredQuestionCard)]), []);
+
+    return (<Home><AnsweredQuestionList answeredQuestions={answeredQuestions} /></Home>);
 };
 
 export default AnsweredQuestions;
