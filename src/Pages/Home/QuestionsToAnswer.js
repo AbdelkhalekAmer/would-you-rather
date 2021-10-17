@@ -2,6 +2,7 @@ import './QuestionsToAnswer.css';
 import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import Home from './Home';
+import QuestionToAnswerList from '../../Components/Question/QuestionToAnswerList';
 
 const QuestionsToAnswer = () => {
     const [questionsToAnswer, setQuestionsToAnswer] = useState([]);
@@ -16,10 +17,22 @@ const QuestionsToAnswer = () => {
         return !(hasVotedForOptionOne || hasVotedForOptionTwo);
     };
 
-    useEffect(() => setQuestionsToAnswer([...questions.filter(isQuestionNotAnsweredByAuthenticatedUser)]), [questionsToAnswer]);
+    const toQuestionToAnswerCard = (questionToAnswer) => ({
+        author: questionToAnswer.author,
+        question: {
+            id: questionToAnswer.id,
+            optionOne: questionToAnswer.optionOne.text,
+            optionTwo: questionToAnswer.optionTwo.text
+        }
+    });
+
+    useEffect(
+        () => setQuestionsToAnswer([...questions.filter(isQuestionNotAnsweredByAuthenticatedUser).map(toQuestionToAnswerCard)]),
+        [questionsToAnswer]
+    );
 
     return (<Home>
-        <div>{JSON.stringify(questionsToAnswer)}</div>
+        <QuestionToAnswerList questionsToAnswer={questionsToAnswer} />
     </Home>);
 };
 
