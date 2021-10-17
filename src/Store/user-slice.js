@@ -11,9 +11,13 @@ const INITIAL_USER = {
 const userSlice = createSlice({
     name: 'user',
     initialState: {
+        users: [],
         authenticatedUser: INITIAL_USER
     },
     reducers: {
+        setUsers: (state, action) => {
+            state.users = [...action.payload.users];
+        },
         setAuthenticatedUser: (state, action) => {
             const user = action.payload.user;
             if (!user || !user.id || !user.name || !user.avatarURL) throw Error(`Invalid user data, ${JSON.stringify(user)}`);
