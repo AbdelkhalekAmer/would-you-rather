@@ -3,9 +3,9 @@ import AnsweredQuestion from './AnsweredQuestion';
 import StaticCard from '../UI/StaticCard/StaticCard';
 
 const AnsweredQuestionList = ({ answeredQuestions }) => {
-    return answeredQuestions.map(answeredQuestion => (<StaticCard>
+    return answeredQuestions.length ? answeredQuestions.map(answeredQuestion => (<StaticCard>
         <AnsweredQuestion key={answeredQuestion.id} {...answeredQuestion} />
-    </StaticCard>));
+    </StaticCard>)) : <p>No answered questions</p>;
 };
 
 export default AnsweredQuestionList;

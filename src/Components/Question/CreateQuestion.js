@@ -47,12 +47,12 @@ const CreateQuestion = () => {
             <h2>Create New</h2>
             <form onSubmit={createQuestionHandler}>
                 <h3>Would you rather?</h3>
-                <input
+                <input required
                     placeholder='Option One...'
                     value={options.optionOne}
                     onChange={onChangingOptionOneHandler} />
                 <h3> or </h3>
-                <input
+                <input required
                     placeholder='Option Two...'
                     value={options.optionTwo}
                     onChange={onChangingOptionTwoHandler} />
