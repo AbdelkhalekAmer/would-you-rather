@@ -1,14 +1,12 @@
 import './AnsweredQuestionPage.css';
 import { useSelector } from 'react-redux';
-import { Redirect, useParams, useHistory } from 'react-router';
+import { useParams } from 'react-router';
 import Page from '../Page';
 import StaticCard from '../../Components/UI/StaticCard/StaticCard';
 import AnsweredQuestion from '../../Components/Question/AnsweredQuestion';
 import NotFound from '../NotFound/NotFound';
 
 const AnsweredQuestionPage = () => {
-    const history = useHistory();
-
     const { questionId } = useParams();
 
     const users = useSelector(state => state.user.users);
