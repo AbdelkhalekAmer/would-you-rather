@@ -19,7 +19,8 @@ const LeaderBoard = () => {
                 totalAskedQuestion,
                 score: totalAnsweredQuestions + totalAskedQuestion
             };
-        });
+        })
+        .sort((a, b) => b.score - a.score);
 
     return (<Page>
         <LeaderBoardList usersScores={usersScores} />

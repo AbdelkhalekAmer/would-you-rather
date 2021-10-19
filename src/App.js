@@ -11,7 +11,7 @@ import AnsweredQuestionPage from './Pages/Question/AnsweredQuestionPage';
 
 const App = () => {
   return (<Switch>
-    <Route exact path='/Login' render={() => <LandingPage />} />
+    <Route exact path='/login' render={() => <LandingPage />} />
     <PrivateRoute exact path={['/', '/home', '/home/questions']} component={Home.QuestionsToAnswer} />
     <PrivateRoute exact path={['/questions/:questionId']} component={QuestionPage} />
     <PrivateRoute exact path={['/home/answered']} component={Home.AnsweredQuestions} />
