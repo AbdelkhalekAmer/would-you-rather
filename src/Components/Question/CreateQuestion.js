@@ -2,9 +2,11 @@ import './CreateQuestion.css';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createQuestion } from '../../Store/question-actions';
-import { Redirect } from 'react-router';
+import { Redirect, useHistory } from 'react-router';
 
 const CreateQuestion = () => {
+    const history = useHistory();
+
     const dispatch = useDispatch();
 
     const authenticatedUser = useSelector(state => state.user.authenticatedUser);
@@ -42,7 +44,7 @@ const CreateQuestion = () => {
     }
 
     return redirect ?
-        <Redirect to='/' /> :
+        <Redirect to={{ pathname: '/home/questions', state: { from: history.location } }} /> :
         (<div>
             <h2>Create New</h2>
             <form onSubmit={createQuestionHandler}>

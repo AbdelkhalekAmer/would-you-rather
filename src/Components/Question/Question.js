@@ -2,9 +2,11 @@ import './Question.css';
 import { useDispatch, useSelector } from 'react-redux';
 import { saveAnswer } from '../../Store/question-actions';
 import { Fragment, useState } from 'react';
-import { Redirect } from 'react-router';
+import { Redirect, useHistory } from 'react-router';
 
 const Question = ({ author, question }) => {
+    const history = useHistory();
+
     const dispatch = useDispatch();
 
     const [answer, updateAnswer] = useState('');
@@ -27,7 +29,7 @@ const Question = ({ author, question }) => {
     };
 
     return redirect ?
-        <Redirect to='/' /> :
+        <Redirect to={{ pathname: '/home/questions', state: { from: history.location } }} /> :
         (<Fragment>
             <div className='user'>
                 <img src={author.avatarURL} alt='avatar' />
