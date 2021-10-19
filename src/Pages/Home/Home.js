@@ -13,12 +13,12 @@ const Home = ({ children }) => {
 
     return (<Page>
         <div className='home-navigation'>
-            <Link to='/Home/Questions-to-answer'>
+            <Link to='/home/questions'>
                 <Card>
                     Questions To Answer
                 </Card>
             </Link>
-            <Link to='/Home/Answered-questions'>
+            <Link to='/home/answered'>
                 <Card>
                     Answered Questions
                 </Card>

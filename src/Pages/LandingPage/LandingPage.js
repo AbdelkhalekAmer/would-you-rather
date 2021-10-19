@@ -11,7 +11,7 @@ const LandingPage = () => {
     useEffect(() => dispatch(getAllUsers()), [dispatch]);
 
     return authenticatedUser && authenticatedUser.id ?
-        (<Redirect to='/Home/Questions-to-answer' />) :
+        (<Redirect to='/home/questions' />) :
         (<div className='landing-page'><Login /></div>);
 };
 

@@ -14,16 +14,16 @@ const Header = () => {
     return (<div className='header'>
         <h1>{'<WOULD YOU RATHER />'}</h1>
         <ul>
-            <li><Link to='/Home/Questions-to-answer'>Home</Link></li>
-            <li><Link to='/New-question'>New Question</Link></li>
-            <li><Link to='/Leader-board'>Leader Board</Link></li>
+            <li><Link to='/home/questions'>Home</Link></li>
+            <li><Link to='/add'>New Question</Link></li>
+            <li><Link to='/leaderboard'>Leader Board</Link></li>
         </ul>
         <div className='logout'>
             <div className='user'>
                 <img src={authenticatedUser.avatarURL} alt='avatar' />
                 <span>{authenticatedUser.name}</span>
             </div>
-            <Link to='/Login' onClick={logoutHandler}>Logout</Link>
+            <Link to='/login' onClick={logoutHandler}>Logout</Link>
         </div>
     </div>);
 };

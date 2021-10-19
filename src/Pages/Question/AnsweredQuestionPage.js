@@ -1,20 +1,20 @@
-import './AnsweredQuestions.css';
-import Home from './Home';
+import './AnsweredQuestionPage.css';
 import { useSelector } from 'react-redux';
-import AnsweredQuestionList from '../../Components/Question/AnsweredQuestionList';
+import { useParams } from 'react-router';
+import Page from '../Page';
+import StaticCard from '../../Components/UI/StaticCard/StaticCard';
+import AnsweredQuestion from '../../Components/Question/AnsweredQuestion';
 
-const AnsweredQuestions = () => {
+const AnsweredQuestionPage = () => {
+    const { questionId } = useParams();
+
     const users = useSelector(state => state.user.users);
 
     const authenticatedUser = useSelector(state => state.user.authenticatedUser);
 
-    const questions = useSelector(state => state.question.questions)
-        .filter((question) => {
-            const hasVotedForOptionOne = question.optionOne.votes.includes(authenticatedUser.id);
-            const hasVotedForOptionTwo = question.optionTwo.votes.includes(authenticatedUser.id);
-            return hasVotedForOptionOne || hasVotedForOptionTwo;
-        })
-        .map((answeredQuestion) => {
+    const filteredAnsweredQuestions = useSelector(state => state.question.questions)
+        .filter(question => question.id === questionId)
+        .map(answeredQuestion => {
             const author = users.find(user => user.id === answeredQuestion.author);
             return {
                 id: answeredQuestion.id,
@@ -37,7 +37,13 @@ const AnsweredQuestions = () => {
             };
         });
 
-    return (<Home><AnsweredQuestionList answeredQuestions={questions} /></Home>);
+    const answeredQuestion = filteredAnsweredQuestions[0];
+
+    return (<Page>
+        <StaticCard>
+            <AnsweredQuestion {...answeredQuestion} />
+        </StaticCard>
+    </Page>);
 };
 
-export default AnsweredQuestions;
+export default AnsweredQuestionPage;
