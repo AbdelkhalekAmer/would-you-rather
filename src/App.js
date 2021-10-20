@@ -8,8 +8,15 @@ import NewQuestion from './Pages/NewQuestion/NewQuestion';
 import LeaderBoard from './Pages/LeaderBoard/LeaderBoard';
 import QuestionPage from './Pages/Question/QuestionPage';
 import AnsweredQuestionPage from './Pages/Question/AnsweredQuestionPage';
+import { useDispatch } from 'react-redux';
+import { getAllQuestions } from '../src/Store/question-actions';
+import { useEffect } from 'react';
 
 const App = () => {
+  const dispatch = useDispatch();
+
+  useEffect(() => dispatch(getAllQuestions()), [dispatch]);
+
   return (<Switch>
     <Route exact path='/login' render={() => <LandingPage />} />
     <PrivateRoute exact path={['/', '/home', '/home/questions']} component={Home.QuestionsToAnswer} />
