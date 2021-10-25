@@ -1,5 +1,10 @@
 .user-item {
-  height: 20vh;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
 }
 
 .user-item img {

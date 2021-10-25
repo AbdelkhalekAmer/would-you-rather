@@ -1,14 +1,12 @@
 import './AnsweredQuestion.css';
 import { Fragment } from 'react';
+import User from '../User/User';
 
 const AnsweredQuestion = ({ author, optionOne, optionTwo, totalVotes }) => {
     const answered = <span className='answer-mark'>YOUR ANSWER</span>;
 
     return (<Fragment>
-        <div className='answered-question-author'>
-            <img src={author.avatarURL} alt='avatar' />
-            <span>{author.name}</span>
-        </div>
+        <User {...author} />
         <div className='answered-question'>
             <h3>Would you rather?</h3>
             <ul>

@@ -6,7 +6,7 @@ const Login = () => {
     const users = useSelector(state => state.user.users);
 
     return (<div className='login'>
-        <h3>Who are you?</h3>
+        <h1>Who are you?</h1>
         <UserList users={users} />
     </div>);
 };

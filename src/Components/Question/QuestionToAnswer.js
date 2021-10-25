@@ -1,20 +1,16 @@
 import './QuestionToAnswer.css';
-import StaticCard from '../UI/StaticCard/StaticCard';
+import User from '../User/User';
 import { Link, useHistory } from 'react-router-dom';
 
 const QuestionToAnswer = ({ author, question }) => {
     const history = useHistory();
 
-    return (<StaticCard>
-        <div className='user'>
-            <img src={author.avatarURL} alt='avatar' />
-            <span>{author.name}</span>
-        </div>
-        <div className='question'>
+    return (<div className="question">
+        <Link to={{ pathname: `/questions/${question.id}`, state: { from: history.location } }}>
+            <User {...author} />
             <p>{question.text}</p>
-            <Link to={{ pathname: `/questions/${question.id}`, state: { from: history.location } }}>View</Link>
-        </div>
-    </StaticCard>);
+        </Link >
+    </div>);
 };
 
 export default QuestionToAnswer;

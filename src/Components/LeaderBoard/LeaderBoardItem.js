@@ -1,12 +1,10 @@
 import { Fragment } from 'react';
+import User from '../User/User';
 import './LeaderBoardItem.css';
 
 const LeaderBoardItem = ({ user, totalAnsweredQuestions, totalAskedQuestion, score }) => {
     return (<Fragment>
-        <div className='user'>
-            <img src={user.avatarURL} alt='avatar' />
-            <span>{user.name}</span>
-        </div>
+        <User {...user} />
         <div className='scores'>
             <span>Answered Questions: {totalAnsweredQuestions}</span>
             <span>Questions Asked: {totalAskedQuestion}</span>

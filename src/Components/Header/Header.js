@@ -3,6 +3,7 @@ import { Link, useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import { useDispatch } from 'react-redux';
 import { userActions } from '../../Store/user-slice';
+import User from '../User/User';
 
 const Header = () => {
     const history = useHistory();
@@ -16,16 +17,13 @@ const Header = () => {
     return (<div className='header'>
         <h1>{'<WOULD YOU RATHER />'}</h1>
         <ul>
-            <li><Link to={{ pathname: '/home/questions', state: { from: history.location } }}>Home</Link></li>
-            <li><Link to={{ pathname: '/add', state: { from: history.location } }}>New Question</Link></li>
-            <li><Link to={{ pathname: '/leaderboard', state: { from: history.location } }}>Leader Board</Link></li>
+            <li><Link to={{ pathname: '/home/questions', state: { from: history.location } }}><span>Home</span></Link></li>
+            <li><Link to={{ pathname: '/add', state: { from: history.location } }}><span>New Question</span></Link></li>
+            <li><Link to={{ pathname: '/leaderboard', state: { from: history.location } }}><span>Leader Board</span></Link></li>
         </ul>
         <div className='logout'>
-            <div className='user'>
-                <img src={authenticatedUser.avatarURL} alt='avatar' />
-                <span>{authenticatedUser.name}</span>
-            </div>
-            <Link to={{ pathname: '/login', state: { from: history.location } }} onClick={logoutHandler}>Logout</Link>
+            <User {...authenticatedUser} />
+            <Link to={{ pathname: '/login', state: { from: history.location } }} onClick={logoutHandler}><span>Logout</span></Link>
         </div>
     </div>);
 };
