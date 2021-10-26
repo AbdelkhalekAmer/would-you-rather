@@ -1,12 +1,24 @@
 .home-navigation {
   width: 100%;
   display: flex;
-  flex-direction: row;
+  flex-flow: row nowrap;
   justify-content: space-between;
 }
 
 .home-navigation a {
   width: 100%;
-  text-decoration: none;
   margin: 1rem;
+}
+
+.home-navigation span{
+  font-size: 1rem;
+}
+
+.home-content{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-evenly;
+  align-items: baseline;
 }

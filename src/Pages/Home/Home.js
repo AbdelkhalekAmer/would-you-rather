@@ -5,21 +5,23 @@ import { Link, useHistory } from 'react-router-dom';
 
 const Home = ({ children }) => {
     const history = useHistory();
-    
+
     return (<Page>
         <div className='home-navigation'>
             <Link to={{ pathname: '/home/questions', state: { from: history.location } }}>
                 <Card>
-                    Questions To Answer
+                    <span>Questions To Answer</span>
                 </Card>
             </Link>
             <Link to={{ pathname: '/home/answered', state: { from: history.location } }}>
                 <Card>
-                    Answered Questions
+                    <span>Answered Questions</span>
                 </Card>
             </Link>
         </div>
-        {children}
+        <div className='home-content'>
+            {children}
+        </div>
     </Page>);
 };
 
