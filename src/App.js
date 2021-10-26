@@ -26,8 +26,7 @@ const App = () => {
     <PrivateRoute exact path='/add' component={NewQuestion} />
     <PrivateRoute exact path='/leaderboard' component={LeaderBoard} />
     <Route path='*' render={() => <NotFound />} />
-  </Switch>
-  );
+  </Switch>);
 };
 
 export default App;

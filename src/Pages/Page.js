@@ -1,14 +1,15 @@
 import './Page.css';
 import Header from '../Components/Header/Header';
-import { Fragment } from 'react';
+import Footer from '../Components/Footer/Footer';
 
 const Page = ({ children }) => {
-    return (<Fragment>
-        <Header></Header>
+    return (<div className='page'>
+        <Header />
         <div className='page-content'>
             {children}
         </div>
-    </Fragment>);
+        <Footer />
+    </div>);
 };
 
 export default Page;

@@ -15,13 +15,13 @@ const Header = () => {
     const logoutHandler = _ => dispatch(userActions.unSetAuthenticatedUser());
 
     return (<div className='header'>
-        <h1>{'<WOULD YOU RATHER />'}</h1>
-        <ul>
-            <li><Link to={{ pathname: '/home/questions', state: { from: history.location } }}><span>Home</span></Link></li>
-            <li><Link to={{ pathname: '/add', state: { from: history.location } }}><span>New Question</span></Link></li>
-            <li><Link to={{ pathname: '/leaderboard', state: { from: history.location } }}><span>Leader Board</span></Link></li>
+        <h1 className='header-item'>{'<WOULD YOU RATHER />'}</h1>
+        <ul className='header-item'>
+            <li><Link to={{ pathname: '/home/questions', state: { from: history.location } }}>{'"Home"'}</Link></li>
+            <li><Link to={{ pathname: '/add', state: { from: history.location } }}>{'"New Question"'}</Link></li>
+            <li><Link to={{ pathname: '/leaderboard', state: { from: history.location } }}>{'"Leader Board"'}</Link></li>
         </ul>
-        <div className='logout'>
+        <div className='logout header-item'>
             <User {...authenticatedUser} />
             <Link to={{ pathname: '/login', state: { from: history.location } }} onClick={logoutHandler}><span>Logout</span></Link>
         </div>
